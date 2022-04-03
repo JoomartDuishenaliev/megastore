@@ -1,25 +1,26 @@
-const btn = document.querySelector('button');
-
-const lastName = document.querySelector('#mandatoryInfo');
-const firstName = document.querySelector('#mandatoryName');
-const passport = document.querySelector('#mandatoryPass');
-const identification = document.querySelector('#mandatoryId');
-const issueDate = document.querySelector('#mandatoryDate');
-
-function findValue (values){
-    values.onchange = () => values;
-}
-findValue('lastName', 'firstName', 'passport');
+const btn = document.querySelector('#nextLink');
 
 btn.onclick = () => {
+    let surname = document.querySelector('#mandatoryInfo');
+    let name = document.querySelector('#mandatoryName');
+    let passport = document.querySelector('#mandatoryPass');
+    let personalId = document.querySelector('#mandatoryId');
+    let issueDate = document.querySelector('#mandatoryDate');
 
-    let dataStorage = {
-        surname: lastName.value,
-        name: firstName.value,
+    let storage = {
+        lastName: surname.value,
+        firstName: name.value,
         passport: passport.value,
-        personalNumber: identification.value,
-        dateOfIssue: issueDate.value
+        IdNumber: personalId.value,
+        issueDate: issueDate.value
     }
 
-    localStorage.setItem('dataStorage', JSON.stringify(dataStorage));
+    if (storage.lastName.length === 0 || storage.firstName.length === 0 || storage.passport.length === 0 ||
+        storage.IdNumber.length === 0 || storage.issueDate.length === 0) {
+        alert('fill in all');
+        return btn.href = '#';
+    } else {
+        localStorage.setItem('dataStorage', JSON.stringify(storage));
+        return btn.href = 'form2.html';
+    }
 }
