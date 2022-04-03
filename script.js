@@ -6,12 +6,19 @@ const passport = document.querySelector('#mandatoryPass');
 const identification = document.querySelector('#mandatoryId');
 const issueDate = document.querySelector('#mandatoryDate');
 
-lastName.onchange = () => lastName.value;
+function findValue (values){
+    values.onchange = () => values;
+}
+findValue('lastName', 'firstName', 'passport');
 
 btn.onclick = () => {
 
     let dataStorage = {
         surname: lastName.value,
+        name: firstName.value,
+        passport: passport.value,
+        personalNumber: identification.value,
+        dateOfIssue: issueDate.value
     }
 
     localStorage.setItem('dataStorage', JSON.stringify(dataStorage));
