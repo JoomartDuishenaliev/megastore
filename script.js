@@ -2,6 +2,9 @@ const btn = document.querySelector('#nextLink');
 const notification = document.querySelector('.notification');
 
 btn.onclick = () => {
+    const field = document.querySelector('div.highlight');
+    const field2 = document.querySelector('div.highlight2');
+
     let surname = document.querySelector('#mandatoryInfo');
     let name = document.querySelector('#mandatoryName');
     let passport = document.querySelector('#mandatoryPass');
@@ -24,6 +27,8 @@ btn.onclick = () => {
         notification.style.position = 'absolute';
         notification.style.zIndex = '999';
         notification.textContent = 'Заполните необходимые поля';
+        field.classList.add('border', 'border-warning');
+        field2.classList.add('border', 'border-warning');
 
         let timeoutId = setTimeout(() => {
             notification.className = '';
@@ -31,9 +36,10 @@ btn.onclick = () => {
             clearTimeout(timeoutId);
         }, 2000)
 
-        return btn.href = '#';
+        btn.href = '#';
     } else {
         localStorage.setItem('dataStorage', JSON.stringify(storage));
-        return btn.href = 'form2.html';
+        btn.href = 'form2.html';
     }
+
 }
