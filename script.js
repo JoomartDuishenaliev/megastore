@@ -1,10 +1,9 @@
 const btn = document.querySelector('#nextLink');
 const notification = document.querySelector('.notification');
+const field = document.querySelector('div.highlight');
+const field2 = document.querySelector('div.highlight2');
 
 btn.onclick = () => {
-    const field = document.querySelector('div.highlight');
-    const field2 = document.querySelector('div.highlight2');
-
     let surname = document.querySelector('#mandatoryInfo');
     let name = document.querySelector('#mandatoryName');
     let passport = document.querySelector('#mandatoryPass');
@@ -27,8 +26,8 @@ btn.onclick = () => {
         notification.style.position = 'absolute';
         notification.style.zIndex = '999';
         notification.textContent = 'Заполните необходимые поля';
-        field.classList.add('border', 'border-warning');
-        field2.classList.add('border', 'border-warning');
+        field.classList.add('border', 'border-danger');
+        field2.classList.add('border', 'border-danger');
 
         let timeoutId = setTimeout(() => {
             notification.className = '';
